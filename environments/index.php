@@ -32,8 +32,11 @@ return [
     'Development' => [
         'path' => 'dev',
         'setWritable' => [
+            'api/runtime',
+            'api/web/assets',
             'backend/runtime',
             'backend/web/assets',
+            'backend/web/uploads',
             'frontend/runtime',
             'frontend/web/assets',
         ],
@@ -42,15 +45,22 @@ return [
             'yii_test',
         ],
         'setCookieValidationKey' => [
+            'api/config/main-local.php',
             'backend/config/main-local.php',
             'frontend/config/main-local.php',
         ],
+        'createSymlink' =>[
+          'frontend/web/uploads'=>'backend/web/uploads'
+        ]
     ],
     'Production' => [
         'path' => 'prod',
         'setWritable' => [
+            'api/runtime',
+            'api/web/assets',
             'backend/runtime',
             'backend/web/assets',
+            'backend/web/uploads',
             'frontend/runtime',
             'frontend/web/assets',
         ],
@@ -59,8 +69,12 @@ return [
             'yii_test',
         ],
         'setCookieValidationKey' => [
+            'api/config/main-local.php',
             'backend/config/main-local.php',
             'frontend/config/main-local.php',
         ],
+        'createSymlink' =>[
+          'frontend/web/uploads'=>'backend/web/uploads'
+        ]
     ],
 ];
