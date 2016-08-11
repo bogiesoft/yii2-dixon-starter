@@ -39,3 +39,5 @@ backend/tests/_support/_generated/*
 
 # docker-compose file
 docker-compose.yml
+
+composer.lock
