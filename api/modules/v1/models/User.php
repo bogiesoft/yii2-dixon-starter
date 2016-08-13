@@ -40,7 +40,8 @@ class User extends \yii\db\ActiveRecord
         'username',
         'email',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'status'
       ];
     }
 
@@ -50,11 +51,13 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'email', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
-            [['username', 'email'], 'string', 'max' => 255],
+            [['username', 'email', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
+            [['password_reset_at', 'confirmed_email_at', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'email', 'password_hash', 'password_reset_token'], 'string', 'max' => 255],
+            [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
-            [['email'], 'unique']
+            [['email'], 'unique'],
+            [['password_reset_token'], 'unique']
         ];
     }
 
@@ -78,14 +81,12 @@ class User extends \yii\db\ActiveRecord
         ];
     }
 
-
-
     /**
      * @inheritdoc
      * @return UserQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new UserQuery(get_called_class());
+        return new \api\modules\v1\models\query\UserQuery(get_called_class());
     }
 }

@@ -2,15 +2,12 @@
 
 namespace api\modules\v1\controllers;
 
-use yii\rest\ActiveController;
-use yii\filters\AccessControl;
+use Yii;
+use api\components\ActiveController;
+
 class UserController extends ActiveController
 {
      public $modelClass = 'api\modules\v1\models\User';
-     public $serializer = [
-       'class' => 'yii\rest\Serializer',
-       'collectionEnvelope' => 'items',
-     ];
 
      public function actions()
     {

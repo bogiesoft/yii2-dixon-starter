@@ -17,7 +17,8 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+        "filsh/yii2-oauth2-server": "~2.0"
     },
     "require-dev": {
         "codeception/base": "^2.2.3",
@@ -38,7 +39,9 @@
     "scripts": {
       "post-install-cmd": [
         "php init --env=Development --overwrite=n",
-        "php yii migrate/up --interactive=0"
+        "php yii migrate/up --interactive=0",
+        "php yii migrate/up --migrationPath=@yii/log/migrations --interactive=0",
+        "php yii migrate/up --migrationPath=@yii/rbac/migrations --interactive=0"
       ]
     }
 }
