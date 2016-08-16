@@ -18,16 +18,26 @@ class m130524_201442_init extends Migration
             'auth_key' => $this->string(32)->notNull(),
             'password_hash' => $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),
+            'access_token' => $this->string()->unique(),
             'email' => $this->string()->notNull()->unique(),
-
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
+
+        $this->createTable('auth', [
+            'id' => $this->primaryKey(),
+            'user_id' => $this->integer()->notNull(),
+            'source' => $this->string()->notNull(),
+            'source_id' => $this->string()->notNull(),
+        ],$tableOptions);
+
+        $this->addForeignKey('fk-auth-user_id-user-id', 'auth', 'user_id', 'user', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()
     {
+        $this->dropTable('{{%auth}}');
         $this->dropTable('{{%user}}');
     }
 }

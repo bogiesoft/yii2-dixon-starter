@@ -7,10 +7,10 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-api',
+    'id' => 'app-account',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute'=>'v1/user',
+    'controllerNamespace' => 'account\controllers',
     'modules' => [
       'oauth2' => [
             'class' => 'filsh\yii2\oauth2server\Module',
@@ -30,6 +30,9 @@ return [
                 'refresh_token' => [
                     'class' => 'OAuth2\GrantType\RefreshToken',
                     'always_issue_new_refresh_token' => true
+                ],
+                'authorization_code' => [
+                    'class' => 'OAuth2\GrantType\AuthorizationCode'
                 ]
             ]
         ],
@@ -40,32 +43,16 @@ return [
     ],
     'components' => [
         'request' => [
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ]
-        ],
-        'response' => [
-            'class' => 'yii\web\Response',
-            //'format' => yii\web\Response::FORMAT_JSON,
-            //'charset' => 'UTF-8',
-            'on beforeSend' => function ($event) {
-                $response = $event->sender;
-                if ($response->data !== null && Yii::$app->request->get('suppress_response_code')) {
-                    $response->data = [
-                        'success' => $response->isSuccessful,
-                        'data' => $response->data,
-                    ];
-                    $response->statusCode = 200;
-                }
-                return $response;
-            },
+            'csrfParam' => '_csrf-account',
         ],
         'user' => [
-            'identityClass' => 'api\models\User',
-            //'identityClass' => 'common\models\User',
-            'enableAutoLogin' => false,
-            'enableSession' => false,
-            'loginUrl'=> null
+            'identityClass' => 'common\models\User',
+            'enableAutoLogin' => true,
+            'identityCookie' => ['name' => '_identity-account', 'httpOnly' => true],
+        ],
+        'session' => [
+            // this is the name of the session cookie used for login on the frontend
+            'name' => 'advanced-account',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
