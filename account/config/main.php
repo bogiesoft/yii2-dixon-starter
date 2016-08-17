@@ -13,7 +13,7 @@ return [
     'controllerNamespace' => 'account\controllers',
     'modules' => [
       'oauth2' => [
-            'class' => 'filsh\yii2\oauth2server\Module',
+            'class' => 'dixonsatit\yii2\oauth2server\Module',
             'tokenParamName' => 'access-token',
             'tokenAccessLifetime' => 3600 * 24,
             'storageMap' => [
