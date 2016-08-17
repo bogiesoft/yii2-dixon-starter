@@ -48,7 +48,7 @@ services:
       environment:
         ENABLE_ENV_FILE: 1
         ENABLE_LOCALCONF: 1
-        API_TOKEN: "========= GitHub Personal Api Token ========="
+        API_TOKEN: "============ GitHub Api Token ==========="
 
   nginx:
       build: ./docker/nginx

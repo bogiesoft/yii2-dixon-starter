@@ -23,11 +23,11 @@ class YiiSso extends OAuth2
         ];
     }
 
-    public $authUrl = 'http://accounts.sathit.me/oauth2/authorize';
+    public $authUrl    = 'https://accounts.sathit.me/oauth2/authorize';
 
-    public $tokenUrl = 'http://accounts.sathit.me/oauth2/token';
+    public $tokenUrl   = 'https://accounts.sathit.me/oauth2/token';
 
-    public $apiBaseUrl = 'http://api.sathit.me/v1/';
+    public $apiBaseUrl = 'https://api.sathit.me/v1/';
 
     protected function initUserAttributes()
     {
