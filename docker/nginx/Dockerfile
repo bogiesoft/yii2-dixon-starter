@@ -1,2 +1,2 @@
-FROM nginx:1.7.10
+FROM nginx:1.10.1
 COPY nginx.conf /etc/nginx/nginx.conf
