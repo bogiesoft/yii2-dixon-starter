@@ -31,9 +31,15 @@ class YiiSso extends OAuth2
 
     protected function initUserAttributes()
     {
-        return $this->api('users/1', 'GET');
+        return $this->api('users/me', 'GET');
+    }
+
+    protected function defaultNormalizeUserAttributeMap()
+    {
+       return [
+           'email' => 'email',
+           'username' => 'username'
+       ];
     }
 }
-
-
  ?>
