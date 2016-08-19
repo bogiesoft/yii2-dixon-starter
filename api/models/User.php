@@ -9,13 +9,26 @@ class User extends \common\models\User implements \OAuth2\Storage\UserCredential
     /**
      * Implemented for Oauth2 Interface
      */
-    public static function findIdentityByAccessToken($token, $type = null)
+    public static function findIdentityByAccessToken($token = null, $type = null)
     {
         /** @var \filsh\yii2\oauth2server\Module $module */
         $module = Yii::$app->getModule('oauth2');
         $token = $module->getServer()->getResourceController()->getToken();
         return !empty($token['user_id'])
                     ? static::findIdentity($token['user_id'])
+                    : null;
+    }
+
+    public static function findMe()
+    {
+        /** @var \filsh\yii2\oauth2server\Module $module */
+        $module = Yii::$app->getModule('oauth2');
+        $token = $module->getServer()->getResourceController()->getToken();
+        return !empty($token['user_id'])
+                    ? static::find()
+                      ->select(['username','email','created_at','updated_at'])
+                      ->where(['id'=>$token['user_id']])
+                      ->one()
                     : null;
     }
 

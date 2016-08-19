@@ -71,7 +71,14 @@ class SiteController extends Controller
 
     public function onAuthSuccess($client)
     {
-        (new AuthHandler($client))->handle();
+      // \yii\helpers\VarDumper::dump($client,10,true);
+      //print_r( $client->getAccessToken());
+      $attributes = $client->getUserAttributes();
+      // //$client->api('users/1', 'GET');
+  
+          // $attributes = $client->getUserAttributes();
+          // print_r($attributes);
+         //(new AuthHandler($client))->handle();
     }
 
     /**

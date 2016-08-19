@@ -7,12 +7,18 @@ return [
           'POST oauth2/<action:\w+>' => 'oauth2/rest/<action>',
           [
               'class' => 'yii\rest\UrlRule',
+              'controller' => ['v1/user'],
+              'extraPatterns' => [
+                'GET me' => 'me'
+              ]
+          ],
+          [
+              'class' => 'yii\rest\UrlRule',
               'controller' => [
-                  'v1/user',
                   'v1/todo'
               ],
               'extraPatterns' => [
-                'GET search' => 'search',
+                'GET search' => 'search'
               ]
           ]
       ],
