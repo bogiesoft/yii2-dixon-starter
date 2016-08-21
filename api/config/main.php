@@ -13,7 +13,7 @@ return [
     'defaultRoute'=>'v1/user',
     'modules' => [
       'oauth2' => [
-            'class' => 'filsh\yii2\oauth2server\Module',
+            'class' => 'dixonsatit\yii2\oauth2server\Module',
             'tokenParamName' => 'access-token',
             'tokenAccessLifetime' => 3600 * 24,
             'storageMap' => [
