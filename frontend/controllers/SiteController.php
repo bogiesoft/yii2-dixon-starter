@@ -13,6 +13,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\components\AuthHandler;
+use yii\httpclient\Client;
 /**
  * Site controller
  */
@@ -73,12 +74,15 @@ class SiteController extends Controller
     {
       // \yii\helpers\VarDumper::dump($client,10,true);
       //print_r( $client->getAccessToken());
-      $attributes = $client->getUserAttributes();
+      //$attributes = $client->getUserAttributes();
       // //$client->api('users/1', 'GET');
-  
+
           // $attributes = $client->getUserAttributes();
           // print_r($attributes);
          //(new AuthHandler($client))->handle();
+             print_r($client->getNormalizeUserAttributeMap());
+             die();
+
     }
 
     /**
@@ -88,6 +92,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
+
+      // $homepage = file_get_contents('https://api.sathit.me/v1/users/me');
+      // echo $homepage;
+
+      // // $client = new Client();
+      //
+      // $response = $client->createRequest()
+      //     ->setMethod('get')
+      //     ->setUrl('https://api.sathit.me/v1/users/me')
+      //     ->setData(['access-token' => '4d7959a3754bc31792d621df8c0e205211cc224c'])
+      //     ->send();
+      //     print_r($response);
+
+
         return $this->render('index');
     }
 

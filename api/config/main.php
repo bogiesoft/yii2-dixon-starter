@@ -30,6 +30,9 @@ return [
                 'refresh_token' => [
                     'class' => 'OAuth2\GrantType\RefreshToken',
                     'always_issue_new_refresh_token' => true
+                ],
+                'authorization_code' => [
+                    'class' => 'OAuth2\GrantType\AuthorizationCode'
                 ]
             ]
         ],
