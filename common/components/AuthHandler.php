@@ -24,10 +24,11 @@ class AuthHandler
 
     public function handle()
     {
+
         $attributes = $this->client->getUserAttributes();
         $email = ArrayHelper::getValue($attributes, 'email');
         $id = ArrayHelper::getValue($attributes, 'id');
-        $nickname = ArrayHelper::getValue($attributes, 'login');
+        $nickname = ArrayHelper::getValue($attributes, 'username');
 
         /* @var Auth $auth */
         $auth = Auth::find()->where([
@@ -50,7 +51,6 @@ class AuthHandler
                     $password = Yii::$app->security->generateRandomString(6);
                     $user = new User([
                         'username' => $nickname,
-                        'github' => $nickname,
                         'email' => $email,
                         'password' => $password,
                     ]);

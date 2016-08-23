@@ -89,4 +89,21 @@ class User extends \yii\db\ActiveRecord
     {
         return new \api\modules\v1\models\query\UserQuery(get_called_class());
     }
+
+    public static function findMe()
+    {
+        /** @var \filsh\yii2\oauth2server\Module $module */
+        $module = Yii::$app->getModule('oauth2');
+        $token = $module->getServer()->getResourceController()->getToken();
+        if(!empty($token['user_id'])){
+          $data = static::find()
+            ->select(['id','username','email','created_at','updated_at'])
+            ->where(['id'=>$token['user_id']])
+            ->one();
+          $data->id = sha1(md5($model->id.$model->email.$model->username));
+          return $data;
+        }else{
+          return null;
+        }
+    }
 }

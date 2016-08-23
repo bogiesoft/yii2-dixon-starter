@@ -4,7 +4,7 @@ namespace api\modules\v1\controllers;
 
 use Yii;
 use api\components\ActiveController;
-use api\models\User;
+use api\modules\v1\models\User;
 
 class UserController extends ActiveController
 {
