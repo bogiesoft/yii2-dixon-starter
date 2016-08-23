@@ -25,19 +25,26 @@ class YiiSso extends OAuth2
 
     public $authUrl    = 'https://accounts.sathit.me/oauth2/authorize';
 
-    public $tokenUrl   = 'https://accounts.sathit.me/oauth2/token';
+    public $tokenUrl   = 'https://api.sathit.me/oauth2/token';
 
     public $apiBaseUrl = 'https://api.sathit.me/v1/';
 
-    protected function initUserAttributes()
+    // public $authUrl    = 'http://app-account.dev/oauth2/authorize';
+    //
+    // public $tokenUrl   = 'http://app-account.dev/oauth2/token';
+    //
+    // public $apiBaseUrl = 'http://app-api.dev/v1/';
+
+    public function initUserAttributes()
     {
-        return $this->api('users/me', 'GET');
+        $accessToken = $this->getAccessToken()->getToken();
+        return $this->api($this->apiBaseUrl.'users/me', 'GET', [], ['Authorization'=>"Bearer $accessToken"]);
     }
 
     protected function defaultNormalizeUserAttributeMap()
     {
        return [
-           'email' => 'email',
+           'email' => 'Email',
            'username' => 'username'
        ];
     }

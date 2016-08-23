@@ -14,6 +14,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\components\AuthHandler;
 use yii\httpclient\Client;
+use api\modules\v1\models\User;
 /**
  * Site controller
  */
@@ -83,6 +84,14 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionTest()
+    {
+      $model = User::find()->select(['username', 'email','created_at' ,'updated_at'])
+      ->where(['id'=>1])
+      ->one();
+      print_r(sha1(md5($model->id.$model->email.$model->username)));
     }
 
     /**

@@ -17,8 +17,8 @@ return [
             'clients' => [
                 'yiisso'=>[
                   'class'        => 'common\components\YiiSso',
-                  'clientId'     => 'testclient',
-                  'clientSecret' => 'testpass'
+                  'clientId'     => 'dixon',
+                  'clientSecret' => '1234'
                 ],
             ],
         ],
