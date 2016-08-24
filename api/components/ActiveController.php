@@ -8,7 +8,7 @@ use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\helpers\ArrayHelper;
 use yii\rest\ActiveController as BaseActiveController;
-use filsh\yii2\oauth2server\filters\ErrorToExceptionFilter;
+use dixonsatit\yii2\oauth2server\filters\ErrorToExceptionFilter;
 use common\models\User;
 
 
@@ -24,7 +24,7 @@ class ActiveController extends BaseActiveController
   {
        $oauth2server = [
             'authenticator' => [
-                'class' => \filsh\yii2\oauth2server\filters\auth\CompositeAuth::className(),
+                'class' => \dixonsatit\yii2\oauth2server\filters\auth\CompositeAuth::className(),
                 'authMethods' => [
                     ['class' => HttpBearerAuth::className()],
                     ['class' => QueryParamAuth::className(), 'tokenParam' => 'access-token'],

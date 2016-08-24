@@ -49,8 +49,8 @@ return [
         ],
         'response' => [
             'class' => 'yii\web\Response',
-            //'format' => yii\web\Response::FORMAT_JSON,
-            //'charset' => 'UTF-8',
+            'format' => yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8',
             'on beforeSend' => function ($event) {
                 $response = $event->sender;
                 if ($response->data !== null && Yii::$app->request->get('suppress_response_code')) {

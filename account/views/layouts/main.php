@@ -11,7 +11,7 @@ use common\widgets\Alert;
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Account',
+        'brandLabel' => 'Accounts(YiiSso)',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -20,10 +20,13 @@ use common\widgets\Alert;
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']]
     ];
+    $menuItems[] = ['label' => 'API Reference', 'url' => ['/app/default/index']];
     if (Yii::$app->user->isGuest) {
+
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $menuItems[] = ['label' => 'Applications', 'url' => ['/app/oauth-clients/index']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(

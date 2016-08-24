@@ -126,9 +126,9 @@ class AuthHandler
     private function updateUserInfo(User $user)
     {
         $attributes = $this->client->getUserAttributes();
-        $github = ArrayHelper::getValue($attributes, 'login');
-        if ($user->github === null && $github) {
-            $user->github = $github;
+        $github = ArrayHelper::getValue($attributes, 'username');
+        if ($user->username === null && $username) {
+            $user->username = $github;
             $user->save();
         }
     }
