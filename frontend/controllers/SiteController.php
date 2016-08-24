@@ -86,14 +86,6 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionTest()
-    {
-      $model = User::find()->select(['username', 'email','created_at' ,'updated_at'])
-      ->where(['id'=>1])
-      ->one();
-      print_r(sha1(md5($model->id.$model->email.$model->username)));
-    }
-
     /**
      * Logs in a user.
      *

@@ -12,7 +12,7 @@ class YiiSso extends OAuth2
 
     protected function defaultTitle()
     {
-        return 'YiiSso';
+        return 'Yii2 Single Sing On (SSO)';
     }
 
     protected function defaultViewOptions()
