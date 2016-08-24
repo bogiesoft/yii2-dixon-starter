@@ -95,14 +95,15 @@ class User extends \yii\db\ActiveRecord
         /** @var \filsh\yii2\oauth2server\Module $module */
         $module = Yii::$app->getModule('oauth2');
         $token = $module->getServer()->getResourceController()->getToken();
-        if(!empty($token['user_id'])){
-          $data = static::find()
-            ->select(['id','username','email','created_at','updated_at'])
-            ->where(['id'=>$token['user_id']])
+        if(!empty($token['user_id']))
+        {
+          return static::find()
+            ->select(['username','email'])
+            ->where(['id' => $token['user_id']])
             ->one();
-          $data->id = sha1(md5($model->id.$model->email.$model->username));
-          return $data;
-        }else{
+        }
+          else
+        {
           return null;
         }
     }
