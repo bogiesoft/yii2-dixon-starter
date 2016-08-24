@@ -25,9 +25,9 @@ class AuthHandler
     public function handle()
     {
         $attributes = $this->client->getUserAttributes();
-        $email = ArrayHelper::getValue($attributes, 'email');
-        $id = ArrayHelper::getValue($attributes, 'id');
-        $nickname = ArrayHelper::getValue($attributes, 'username');
+        $email      = ArrayHelper::getValue($attributes, 'email');
+        $id         = ArrayHelper::getValue($attributes, 'id');
+        $nickname   = ArrayHelper::getValue($attributes, 'username');
 
         /* @var Auth $auth */
         $auth = Auth::find()->where([
@@ -40,7 +40,7 @@ class AuthHandler
                 /* @var User $user */
                 $user = $auth->user;
                 $this->updateUserInfo($user);
-                Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
+                Yii::$app->user->login($user, (3600 * 24 * 30));
             } else { // signup
                 if ($email !== null && User::find()->where(['email' => $email])->exists()) {
                     Yii::$app->getSession()->setFlash('error', [
