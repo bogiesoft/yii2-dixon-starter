@@ -15,8 +15,6 @@ use yii\filters\AccessControl;
  */
 class OauthClientsController extends Controller
 {
-
-
     /**
      * @inheritdoc
      */

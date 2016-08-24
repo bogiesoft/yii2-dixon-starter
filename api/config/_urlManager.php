@@ -4,7 +4,6 @@ return [
       'enableStrictParsing' => true,
       'showScriptName' => false,
       'rules' => [
-          'oauth2/<action:\w+>' => 'oauth2/rest/<action>',
           [
               'class' => 'yii\rest\UrlRule',
               'controller' => ['v1/user'],
