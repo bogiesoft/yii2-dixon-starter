@@ -97,10 +97,18 @@ class User extends \yii\db\ActiveRecord
         $token = $module->getServer()->getResourceController()->getToken();
         if(!empty($token['user_id']))
         {
-          return static::find()
-            ->select(['username','email'])
-            ->where(['id' => $token['user_id']])
-            ->one();
+            $user =  static::find()
+              ->where(['id' => $token['user_id']])
+              ->one();
+            if($user==null){
+              throw new yii\web\NotFoundHttpException('Account not found!.');
+            }
+
+            return [
+              'username' => $user->username,
+              'email' => $user->email,
+              'id' => md5($user->id.'^?DixonSatit@gmail.com')
+            ];
         }
           else
         {
