@@ -136,3 +136,11 @@ a.desc:after {
   padding: 10px 0;
   width: 100%;
 }
+
+
+@media screen and (max-width: 767px) {
+  .table-responsive {
+    padding: 20px;
+  }
+
+}

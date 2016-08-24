@@ -46,6 +46,10 @@ class m160811_092341_add_oauth2_server extends Migration
                   'grant_types' => Schema::TYPE_STRING . '(100) NOT NULL',
                   'scope' => Schema::TYPE_STRING . '(2000) DEFAULT NULL',
                   'user_id' => Schema::TYPE_INTEGER . ' DEFAULT NULL',
+                  'display_name' => Schema::TYPE_STRING . '(255) DEFAULT NULL',
+                  'contact_email' => Schema::TYPE_STRING . '(255) DEFAULT NULL',
+                  'created_at' => Schema::TYPE_INTEGER . ' DEFAULT NULL',
+                  'updated_at' => Schema::TYPE_INTEGER . ' DEFAULT NULL',
                   $this->primaryKeyDefinition('client_id'),
               ], $tableOptions);
 
@@ -108,8 +112,8 @@ class m160811_092341_add_oauth2_server extends Migration
               ], $tableOptions);
 
               // insert client data
-              $this->batchInsert('{{%oauth_clients}}', ['client_id', 'client_secret', 'redirect_uri', 'grant_types'], [
-                  ['testclient', 'testpass', 'http://fake/', 'client_credentials authorization_code password implicit'],
+              $this->batchInsert('{{%oauth_clients}}', ['client_id', 'client_secret', 'redirect_uri', 'grant_types','user_id','display_name','contact_email'], [
+                  ['14720232751593541262', 'Tdx9BdO503HqRx9xpsqVLW_dRcl8UUnM', 'https://www.sathit.me/site/auth?authclient=yiisso', 'client_credentials authorization_code password implicit','1','DixonApp','dixonsatit@gmail.com'],
               ]);
 
               $transaction->commit();

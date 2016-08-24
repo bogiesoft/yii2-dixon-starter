@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\components\AuthHandler;
 
 /**
  * Site controller
@@ -50,7 +51,16 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
+            'auth' => [
+                'class' => 'yii\authclient\AuthAction',
+                'successCallback' => [$this, 'onAuthSuccess'],
+            ],
         ];
+    }
+
+    public function onAuthSuccess($client)
+    {
+        (new AuthHandler($client))->handle();
     }
 
     /**

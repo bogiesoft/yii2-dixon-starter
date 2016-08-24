@@ -15,6 +15,7 @@ $this->title = 'My Yii Application';
         <?php if(Yii::$app->user->isGuest): ?>
               <p>
                 <a style="min-width:180px;" class="btn  btn-primary" href="<?=Url::to(['site/login'])?>">Login</a>
+                &nbsp;
                 <a style="min-width:180px;" class="btn  btn-default" href="<?=Url::to(['site/login'])?>">Signup</a>
               </p>
          <?php else: ?>
