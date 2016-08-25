@@ -90,6 +90,7 @@ class OauthClients extends ActiveRecord
     {
         return [
             'client_id' => Yii::t('app', 'App ID'),
+            'display_name' => Yii::t('app', 'App Name'),
             'client_secret' => Yii::t('app', 'App Secret'),
             'redirect_uri' => Yii::t('app', 'Redirect Uri'),
             'grant_types' => Yii::t('app', 'Grant Types'),
