@@ -28,11 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'tableOptions'=>['class'=>'table'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+
             [
-              'attribute'=>'client_id',
+              'attribute'=>'display_name',
               'format'=>'raw',
               'value'=>function($model){
-                return Html::a($model->client_id,Url::to(['/app/oauth-clients/view','id'=>$model->client_id]),['data'=>['pjax'=>'0']]);
+                return Html::a($model->display_name,Url::to(['/app/oauth-clients/view','id'=>$model->client_id]),['data'=>['pjax'=>'0']]);
               }
             ],
             'redirect_uri',

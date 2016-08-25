@@ -18,7 +18,7 @@ class OauthClientsSearch extends OauthClients
     public function rules()
     {
         return [
-            [['client_id', 'client_secret', 'redirect_uri', 'grant_types', 'scope'], 'safe'],
+            [['client_id','display_name', 'client_secret', 'redirect_uri', 'grant_types', 'scope'], 'safe'],
             [['user_id'], 'integer'],
         ];
     }
@@ -66,6 +66,7 @@ class OauthClientsSearch extends OauthClients
             ->andFilterWhere(['like', 'client_secret', $this->client_secret])
             ->andFilterWhere(['like', 'redirect_uri', $this->redirect_uri])
             ->andFilterWhere(['like', 'grant_types', $this->grant_types])
+            ->andFilterWhere(['like', 'display_name', $this->grant_types])
             ->andFilterWhere(['like', 'scope', $this->scope]);
 
         return $dataProvider;
