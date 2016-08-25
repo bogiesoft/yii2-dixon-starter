@@ -22,6 +22,9 @@ return [
             'storageMap' => [
                 'user_credentials' => 'api\models\User',
             ],
+            'options'=>[
+              'allow_implicit' => true,
+            ],
             'grantTypes' => [
                 'client_credentials' => [
                   'class' => 'OAuth2\GrantType\ClientCredentials',
