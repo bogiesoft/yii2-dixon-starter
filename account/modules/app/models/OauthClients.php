@@ -79,6 +79,7 @@ class OauthClients extends ActiveRecord
             [['grant_types'], 'string', 'max' => 100],
             [['scope'], 'string', 'max' => 2000],
             [['redirect_uri'], 'url'],
+            [['grant_types'], 'default', 'value'=>'client_credentials authorization_code password implicit'],
             [['contact_email'], 'email']
         ];
     }
@@ -92,7 +93,7 @@ class OauthClients extends ActiveRecord
             'client_id' => Yii::t('app', 'App ID'),
             'display_name' => Yii::t('app', 'App Name'),
             'client_secret' => Yii::t('app', 'App Secret'),
-            'redirect_uri' => Yii::t('app', 'Redirect Uri'),
+            'redirect_uri' => Yii::t('app', 'Callback URL'),
             'grant_types' => Yii::t('app', 'Grant Types'),
             'scope' => Yii::t('app', 'Scope'),
             'user_id' => Yii::t('app', 'User ID'),
