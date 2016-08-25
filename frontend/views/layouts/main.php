@@ -75,7 +75,7 @@ AppAsset::register($this);
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
-
+<?=$this->render('_googleanalytics.php')?>
 <?php $this->endBody() ?>
 </body>
 </html>

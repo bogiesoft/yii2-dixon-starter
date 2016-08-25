@@ -53,5 +53,6 @@ use common\widgets\Alert;
 </div>
 
 <?=$this->render('_footer')?>
+<?=$this->render('_googleanalytics.php')?>
 
 <?php $this->endContent(); ?>
