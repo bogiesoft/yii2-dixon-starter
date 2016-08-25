@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <h3>Application </h3>
     <?= DetailView::widget([
         'model' => $model,
         'options'=>['class'=>'table'],
@@ -37,11 +38,34 @@ $this->params['breadcrumbs'][] = $this->title;
             [
               'attribute'=>'client_secret',
               'format'=>'raw',
-              'value'=> "<code>$model->client_secret</code>"
+              'value'=> "<details ><code>$model->client_secret</code></details>"
             ],
             'redirect_uri:url',
             'grant_types',
             'scope'
+        ],
+    ]) ?>
+
+    <h3>OAuth 2.0 API</h3>
+    <?= DetailView::widget([
+        'model' => $model,
+        'options'=>['class'=>'table'],
+        'attributes' => [
+            [
+              'label'  => 'Auth URL',
+              'format' => 'url',
+              'value'  => 'https://accounts.sathit.me/oauth2/authorize'
+            ],
+            [
+              'label'  =>'Access Token URL',
+              'format' => 'url',
+              'value'  => 'https://accounts.sathit.me/oauth2/token'
+            ],
+            [
+              'label'  =>'API URL',
+              'format' => 'url',
+              'value'  => 'https://api.sathit.me/v1/'
+            ],
         ],
     ]) ?>
 
