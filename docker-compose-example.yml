@@ -53,6 +53,10 @@ services:
   nginx:
       build: ./docker/nginx
       container_name: ds-nginx
+      log-driver: fluentd
+      log-opt: fluentd-address=localhost:25225
+      expose:
+          - "25225"
       ports:
           - "80:80"
       volumes_from:
