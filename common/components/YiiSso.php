@@ -45,12 +45,11 @@ class YiiSso extends OAuth2
         return  $attributes;
     }
 
-    protected function defaultNormalizeUserAttributeMap()
+    public function applyAccessTokenToRequest($request, $accessToken)
     {
-       return [
-           'email' => 'email',
-           'username' => 'username'
-       ];
+        $data = $request->getData();
+        $data['access_token'] = $accessToken->getToken();
+        $request->setData($data);
     }
 }
  ?>

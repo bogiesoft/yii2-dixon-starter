@@ -17,7 +17,7 @@ return [
       ],
       'oauth2' => [
             'class' => 'dixonsatit\yii2\oauth2server\Module',
-            'tokenParamName' => 'access-token',
+            'tokenParamName' => 'access_token',
             'tokenAccessLifetime' => 3600 * 24,
             'storageMap' => [
                 'user_credentials' => 'api\models\User',

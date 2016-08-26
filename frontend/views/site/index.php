@@ -3,7 +3,14 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
-
+$client = Yii::$app->authClientCollection->getClient('yiisso');
+echo $client->apiBaseUrl;
+echo "<br>";
+$response = $client->createApiRequest()
+    ->setMethod('GET')
+    ->setUrl('https://api.sathit.me/v1/user/me')
+    ->send();
+    print_r($response);
 ?>
 
 <div class="site-index">
