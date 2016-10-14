@@ -40,16 +40,14 @@ class YiiSso extends OAuth2
 
     public function initUserAttributes()
     {
-        $accessToken = $this->getAccessToken()->getToken();
-        $attributes =  $this->api($this->apiBaseUrl.'users/me', 'GET', [], ['Authorization'=>"Bearer $accessToken"]);
-        return  $attributes;
+        return  $this->api($this->apiBaseUrl.'users/me', 'GET');
     }
 
-    public function applyAccessTokenToRequest($request, $accessToken)
-    {
-        $data = $request->getData();
-        $data['access_token'] = $accessToken->getToken();
-        $request->setData($data);
-    }
+    // public function applyAccessTokenToRequest($request, $accessToken)
+    // {
+    //     $data = $request->getData();
+    //     $data['access_token'] = $accessToken->getToken();
+    //     $request->setData($data);
+    // }
 }
  ?>
